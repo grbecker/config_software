@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Application specific routes
+RewriteRule ^contact-edit$ index.php?class=PessoaForm&method=edit&%{QUERY_STRING} [NC]
+RewriteRule ^contact-list$ index.php?class=PessoaList&%{QUERY_STRING} [NC]
