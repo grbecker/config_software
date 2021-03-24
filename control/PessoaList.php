@@ -22,7 +22,6 @@ class PessoaList {
     public function load() {
         try {
             $pessoas = Pessoa::all();
-
             $items = '';
             foreach ($pessoas as $pessoa) {
                 $item = file_get_contents('html/item.html');
@@ -36,13 +35,13 @@ class PessoaList {
             }
             $this->html = str_replace('{items}', $items, $this->html);
         } catch (Exception $e) {
-            print $e->getMessage();
+            $this->html = $e->getMessage();
         }
     }
 
     public function show() {
         $this->load();
-        print $this->html;
+        return $this->html;
     }
 
 }

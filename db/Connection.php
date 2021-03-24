@@ -2,26 +2,17 @@
 
 class Connection {
 
-    private function __construct() {
-        
-    }
-
-    static $user = "root";
-    static $pass = "Spsinf";
-    static $database = "psinf";
-    static $host = "127.0.0.1";
-    static $port = "3306";
-
-    public static function connectionAdmin() {
-        $conn = new PDO("mysql:host=127.0.01;port=3306;dbname=psinf", "root", "Spsinf@2021");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
-    }
+    static $conn;
 
     public static function open() {
-        $conn = new PDO("mysql:host={$host};port={$port};dbname={$name}", $user, $pass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
+
+        if (empty(self::$conn)) {
+            self::$conn = new PDO("mysql:host=127.0.0.1;port=3306;dbname=gastos", "suporte-psinf", "Spsinf");
+            self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return self::$conn;
+        } else {
+            return self::$conn;
+        }
     }
 
 }

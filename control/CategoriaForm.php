@@ -16,7 +16,9 @@ class PessoaForm {
             'Cli_bairro' => null,
             'Cli_telefone' => null,
             'Cli_email' => null,
-            'Cli_telefone' => null];
+            'Cli_cd_cidade' => null,
+            'Cli_telefone' => null                        
+            ];
 
         $cidades = '';
         foreach (Cidade::all() as $cidade) {
