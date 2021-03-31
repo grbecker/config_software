@@ -1,13 +1,14 @@
-<tr>
-<td> <a href='index.php?class=PessoaForm&method=edit&id={Cli_codigo}'>
-             <img src='images/edit.svg' style='width:17px'>
-            </a> </td>
-<td> <a href='index.php?class=PessoaList&method=delete&id={Cli_codigo}'>
-             <img src='images/remove.svg' style='width:17px'>
-            </a> </td>
-<td> {Cli_codigo} </td>
-<td> {Cli_nome} </td>
-<td> {Cli_endereco} </td>
-<td> {Cli_bairro} </td>
-<td> {Cli_telefone} </td>
-</tr>
+<a href="{href}" class="list-group-item list-group-item-action flex-column align-items-start {active}">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{categoria}</h5>      
+        <small>{data}</small>
+    </div>
+    <div class="d-flex w-100 justify-content-between">
+        <small>{complemento}</small>
+        <h5 class="mb-1 {paga}">R$ {valor}</h5>      
+    </div>      
+    <div class="d-flex w-100 justify-content-between">
+        <small>{tipo} {tipo_pagamento} </small>
+        <small class="mb-1 {paga}">{projeto} - {status}</small>      
+    </div>      
+</a>

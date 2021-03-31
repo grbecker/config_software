@@ -1,0 +1,60 @@
+<div class="list-group list-group-flush border-bottom scrollarea">
+    <form class="needs-validation" enctype="multipart/form-data" method="post" action="{action}">    
+        <div class="row">        
+            <div class="col-md-2">
+                <label class="form-label">Data Inicial</label>
+                <input name="data_inicial" type="date" class="form-control" value="{data_inicial}">
+            </div>        
+            <div class="col-md-2">
+                <label class="form-label">Data Final</label>
+                <input name="data_final" type="date" class="form-control" value="{data_final}">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Tipo</label>
+                <select class="form-select" name="tipo">
+                    <option></option>
+                    <option value='R'>Receita</option>
+                    <option value='D'>Despesa</option>
+                    <option value='I'>Investimento</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Pesquisar</label>
+                <div class="input-group mb-3">  
+                    <input type="text" name="pesquisa" value="{pesquisa}" class="form-control" placeholder="Digite aqui o termo de sua pesquisa..." aria-label="Digite aqui o termo de sua pesquisa..." aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>  
+    <div class="list-group">        
+        {itens}                  
+    </div>
+    
+    <br/>
+    
+    <div class="list-group">        
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1"><i class="bi bi-graph-up"></i> TOTAL RECEITA</h6>      
+                <h6 class="mb-1">R$ {valor_receita}</h6>      
+            </div>
+        </a>    
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1"><i class="bi bi-graph-down"></i> TOTAL DESPESA</h6>      
+                    <h6 class="mb-1">R$ {valor_despesa}</h6>      
+                </div>
+            </div>
+        </a>    
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start {active}">
+            <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1"><i class="bi bi-wallet2"></i> TOTAL INVESTIMENTO</h6>      
+                    <h6 class="mb-1">R$ {valor_investimento}</h6>      
+                </div>
+            </div>
+        </a>    
+    </div>
+</div>

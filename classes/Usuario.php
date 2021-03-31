@@ -1,15 +1,15 @@
 <?php
 
-require_once './db/Connection.php';
-require_once './classes/Session.php';
-
+//require_once './db/Connection.php';
+//require_once 'Session.php';
+require_once 'C:\wamp64\www\config_software\db\Connection.php';
+require_once 'C:\wamp64\www\config_software\classes\Session.php';
 
 class Usuario {
     
     public function __construct() {
     }
-
-    
+       
     public static function login($usuario) {
         $conn = Connection::open();        
         $result = $conn->prepare("SELECT * FROM usuario WHERE email = :email AND senha = :senha");
@@ -17,8 +17,11 @@ class Usuario {
             ':email' => $usuario['email'],
             ':senha' => md5($usuario['senha'])
         ]);
-        if ($result->rowCount()) {            
+        if ($result->rowCount()) {
+            $query = $result->fetch();
             Session::setValue('logged', TRUE);
+            Session::setValue('id_usuario', $query['id']);
+            Session::setValue('nome', $query['nome']);
         } else {
             return "Usuário ou senha incorretos";
         }

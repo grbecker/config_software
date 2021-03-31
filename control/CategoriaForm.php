@@ -1,62 +1,79 @@
 <?php
 
-require_once 'classes/Pessoa.php';
-require_once 'classes/Cidade.php';
+require_once 'classes/Categoria.php';
 
-class PessoaForm {
+class CategoriaForm {
 
     private $html;
     private $data;
 
     public function __construct() {
-        $this->html = file_get_contents('html/form.html');
-        $this->data = ['Cli_codigo' => null,
-            'Cli_nome' => null,
-            'Cli_endereco' => null,
-            'Cli_bairro' => null,
-            'Cli_telefone' => null,
-            'Cli_email' => null,
-            'Cli_cd_cidade' => null,
-            'Cli_telefone' => null                        
+        $this->html = file_get_contents('html/formCategoria.html');
+        $this->data = [
+            'id' => null,
+            'nome' => null,
+            'tipo' => null,
+            'essencial' => null
             ];
-
-        $cidades = '';
-        foreach (Cidade::all() as $cidade) {
-            $cidades .= "<option value='{$cidade['Cid_codigo']}'> {$cidade['Cid_nome']} </option>";
+        $tipos = [
+            'D' => 'Despesas',
+            'R' => 'Receitas',
+            'I' => 'Investimentos'
+            ];
+        $tipo = "<option></option>";
+        foreach ($tipos as $row) {
+            $tipo .= "<option value='{$row[0]}'>{$row}</option>";
+        }               
+        $this->html = str_replace('{tipos}', $tipo, $this->html);        
+        
+        $essenciais = [
+            'S' => 'Essencial',
+            'E' => 'Emergência',
+            'N' => 'Outros'
+            ];                      
+        $essencial = "<option></option>";
+        foreach ($essenciais as $row) {
+            $essencial .= "<option value='{$row[0]}'>{$row}</option>";
+        }               
+        $this->html = str_replace('{essencial}', $essencial, $this->html);                       
         }
-        $this->html = str_replace('{cidades}', $cidades, $this->html);
-    }
 
     public function edit($param) {
         try {
-            $codigo = (int) $param['id'];
-            $this->data = Pessoa::find($codigo);
+            $id = (int) $param['id'];
+            $this->data = Categoria::find($id);
         } catch (Exception $e) {
             print $e->getMessage();
         }
     }
 
+    public function delete($param) {
+        try {
+            $id = (int) $param['id'];
+            $this->data = Categoria::delete($id);
+            echo "<script>window.location='categoria-list';</script>";
+        } catch (Exception $e) {
+            print $e->getMessage();
+        }
+    }
+       
     public function save($param) {
         try {
-            Pessoa::save($param);
-            $this->data = $param;
-            print "Pessoa salva com sucesso";
+            $id = Categoria::save($param);
+            //$this->data = $param;
+            echo "<script>window.location='categoria-list?id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
     }
 
     public function show() {
-        $this->html = str_replace('{Cli_codigo}', $this->data['Cli_codigo'], $this->html);
-        $this->html = str_replace('{Cli_nome}', $this->data['Cli_nome'], $this->html);
-        $this->html = str_replace('{Cli_endereco}', $this->data['Cli_endereco'], $this->html);
-        $this->html = str_replace('{Cli_bairro}', $this->data['Cli_bairro'], $this->html);
-        $this->html = str_replace('{Cli_telefone}', $this->data['Cli_telefone'], $this->html);
-        $this->html = str_replace('{Cli_email}', $this->data['Cli_email'], $this->html);
-        $this->html = str_replace('{Cli_cd_cidade}', $this->data['Cli_cd_cidade'], $this->html);
-
-        $this->html = str_replace("option value='{$this->data['Cli_cd_cidade']}'", "option selected=1 value='{$this->data['Cli_cd_cidade']}'", $this->html);
-        print $this->html;
+        $this->html = str_replace('{action}', 'categoria-save', $this->html);
+        $this->html = str_replace('{id}', $this->data['id'], $this->html);
+        $this->html = str_replace('{nome}', $this->data['nome'], $this->html);
+        $this->html = str_replace("option value='{$this->data['tipo']}'", "option selected value='{$this->data['tipo']}'", $this->html);
+        $this->html = str_replace("option value='{$this->data['essencial']}'", "option selected value='{$this->data['essencial']}'", $this->html);
+        return $this->html;
     }
 
 }

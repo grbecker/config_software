@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
-        <title>Sistema para Controle de Gastos</title>
+        <title>Controle de Gastos - {classe}</title>
         <link href="./html/css/bootstrap.min.css" rel="stylesheet">        
         <meta name="theme-color" content="#7952b3">
         <style>
@@ -26,23 +26,23 @@
     </head>
     <body>
         <header class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Controle de gastos</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <div class="w-100"></div>
 
             <ul class="navbar-nav px-5" id="navbarScroll"> 
                 <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i> Olá, Guilherme
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-check"></i> Perfil</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="index.php?class=LoginForm&method=onLogout"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
-                        </ul>
-                    </li>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i> Olá, {nome}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-check"></i> Perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="onLogout"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+                    </ul>
+                </li>
             </ul>
         </header>
 
@@ -53,74 +53,83 @@
 
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
+                                <a class="nav-link active" aria-current="page" href="home">
                                     <i class="bi bi-house"></i>
                                     Dashboard
                                 </a>
                             </li>                            
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                            <span>Movimentos</span>                            
+                            <span>Lançamentos</span>                            
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-wallet2"></i>
-                                    Lançamentos
+                                <a class="nav-link" href="lancamento?type=R">
+                                    <i class="bi bi-graph-up"></i>
+                                    Receitas
                                 </a>
-                            </li>                            
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="lancamento?type=D">
+                                    <i class="bi bi-graph-down"></i>
+                                    Despesas
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="lancamento?type=I">
+                                    <i class="bi bi-wallet2"></i>
+                                    Investimentos
+                                </a>
+                            </li>
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                             <span>Cadastros</span>                            
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="tipo-list">
                                     <i class="bi bi-credit-card"></i>
                                     Tipo pagamento
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="categoria-list">
                                     <i class="bi bi-cart2"></i>
                                     Categorias
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="projeto-list">
                                     <i class="bi bi-clipboard-check"></i>
                                     Projetos
                                 </a>
                             </li>
                         </ul>
-
-
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                             <span>Relatórios</span>                            
                         </h6>
-                        <ul class="nav flex-column mb-2">
+                        <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Gastos Mensais
+                                <a class="nav-link" href="lancamento-list">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    Financeiro
                                 </a>
                             </li>                            
-                        </ul>
+                        </ul>                        
                     </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Dashboard</h1>                        
+                        <h1 class="h4">{classe}</h1>                        
                     </div>                    
                     {content}                                                           
                 </main>
             </div>
         </div>
-
         <script src="./html/js/bootstrap.bundle.min.js"></script>
         <script src="./html/js/feather.min.js"></script>
-        <script src="./html/js/Chart.min.js"></script>
-        <script src="./html/js/dashboard.js"></script>
 
+        {script}
+        
     </body>
 </html>

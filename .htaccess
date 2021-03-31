@@ -3,5 +3,31 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 #Application specific routes
-RewriteRule ^contact-edit$ index.php?class=PessoaForm&method=edit&%{QUERY_STRING} [NC]
-RewriteRule ^contact-list$ index.php?class=PessoaList&%{QUERY_STRING} [NC]
+RewriteRule ^home$ index.php?class=DashboardForm [NC]
+
+RewriteRule ^onLogout$ index.php?class=LoginForm&method=onLogout%{QUERY_STRING} [NC]
+RewriteRule ^onLogin$ index.php?class=LoginForm&method=onLogin%{QUERY_STRING} [NC]
+
+RewriteRule ^tipo$ index.php?class=TipoForm&%{QUERY_STRING} [NC]
+RewriteRule ^tipo-list$ index.php?class=TipoList&%{QUERY_STRING} [NC]
+RewriteRule ^tipo-edit$ index.php?class=TipoForm&method=edit&%{QUERY_STRING} [NC]
+RewriteRule ^tipo-save$ index.php?class=TipoForm&method=save&%{QUERY_STRING} [NC]
+RewriteRule ^tipo-delete$ index.php?class=TipoForm&method=delete&%{QUERY_STRING} [NC]
+
+RewriteRule ^categoria$ index.php?class=CategoriaForm&%{QUERY_STRING} [NC]
+RewriteRule ^categoria-list$ index.php?class=CategoriaList&%{QUERY_STRING} [NC]
+RewriteRule ^categoria-edit$ index.php?class=CategoriaForm&method=edit&%{QUERY_STRING} [NC]
+RewriteRule ^categoria-save$ index.php?class=CategoriaForm&method=save&%{QUERY_STRING} [NC]
+RewriteRule ^categoria-delete$ index.php?class=CategoriaForm&method=delete&%{QUERY_STRING} [NC]
+
+RewriteRule ^projeto$ index.php?class=ProjetoForm&%{QUERY_STRING} [NC]
+RewriteRule ^projeto-list$ index.php?class=ProjetoList&%{QUERY_STRING} [NC]
+RewriteRule ^projeto-edit$ index.php?class=ProjetoForm&method=edit&%{QUERY_STRING} [NC]
+RewriteRule ^projeto-save$ index.php?class=ProjetoForm&method=save&%{QUERY_STRING} [NC]
+RewriteRule ^projeto-delete$ index.php?class=ProjetoForm&method=delete&%{QUERY_STRING} [NC]
+
+RewriteRule ^lancamento$ index.php?class=LancamentoForm&%{QUERY_STRING} [NC]
+RewriteRule ^lancamento-list$ index.php?class=LancamentoList&%{QUERY_STRING} [NC]
+RewriteRule ^lancamento-serch$ index.php?class=LancamentoList&method=onReload&%{QUERY_STRING} [NC]
+RewriteRule ^lancamento-edit$ index.php?class=LancamentoForm&method=edit&%{QUERY_STRING} [NC]
+RewriteRule ^lancamento-save$ index.php?class=LancamentoForm&method=save&%{QUERY_STRING} [NC]

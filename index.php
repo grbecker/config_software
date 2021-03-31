@@ -1,6 +1,7 @@
 <?php
 
 require_once 'classes/Session.php';
+require_once 'util/TranslateClass.php';
 
 spl_autoload_register(function($class) {
     if (file_exists('./control/' . $class . '.php')) {
@@ -9,12 +10,19 @@ spl_autoload_register(function($class) {
 });
 
 $metodo = isset($_REQUEST['method']) ? $_REQUEST['method'] : null;
+$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : null;
+$script = '';
 
 new Session;
 
 if (Session::getValue('logged')) {
     $template = file_get_contents('html/index.html');
-    $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : null;
+    $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : 'DashboardForm';
+
+    if ($classe == 'DashboardForm') {
+        $script = "<script src=\"./html/js/Chart.min.js\"></script>"
+                . "<script src=\"./html/js/dashboard.js\"></script>";
+    }
 } else {
     $template = file_get_contents('html/login.html');
     $classe = 'LoginForm';
@@ -27,14 +35,18 @@ if (class_exists($classe)) {
         if (!empty($metodo) AND method_exists($classe, $metodo)) {
             $pagina->$metodo($_REQUEST);
         }
-        $content = $pagina->show();        
-    } catch (Exception $e) {        
-        $content = $e->getMessage() . '<br>' . $e->getTraceAsString();        
+        $content = $pagina->show();
+    } catch (Exception $e) {
+        $content = $e->getMessage() . '<br>' . $e->getTraceAsString();
     }
 } else {
     $content = "Classe '{$classe}' não definida";
 }
 
 if ($classe != 'LoginForm') {
-    echo str_replace('{content}', $content, $template);
+    $output = str_replace('{content}', $content, $template);
+    $output = str_replace('{classe}', TranslateClass::convert($classe, $type), $output);
+    $output = str_replace('{nome}', Session::getValue('nome'), $output);
+    $output = str_replace('{script}', $script, $output);
+    echo $output;
 }
