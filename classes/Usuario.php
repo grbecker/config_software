@@ -22,6 +22,7 @@ class Usuario {
             Session::setValue('logged', TRUE);
             Session::setValue('id_usuario', $query['id']);
             Session::setValue('nome', $query['nome']);
+            return true;
         } else {
             return "Usuário ou senha incorretos";
         }
