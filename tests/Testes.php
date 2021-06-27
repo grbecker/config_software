@@ -1,6 +1,5 @@
 <?php
 
-include_once './classes/Session.php';
 include_once './classes/Email.php';
 
 include_once './util/FormatValues.php';
@@ -9,13 +8,6 @@ include_once './util/TranslateClass.php';
 use PHPUnit\Framework\TestCase;
 
 class Testes extends TestCase {
-
-    //teste 5
-    public function testSession() {
-        $form = new Session();
-        $form->setValue("usuario", "guilherme@psinf.com.br");				
-        $this->assertEquals("guilherme@psinf.com.br", $form->getValue("usuario"));
-    }    
 
 	//teste 1
     public function testValidarEmail() {
