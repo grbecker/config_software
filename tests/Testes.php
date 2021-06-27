@@ -1,7 +1,7 @@
 <?php
 
-include_once './classes/Email.php';
 include_once './classes/Session.php';
+include_once './classes/Email.php';
 
 include_once './util/FormatValues.php';
 include_once './util/TranslateClass.php';
