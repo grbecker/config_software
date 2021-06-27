@@ -10,4 +10,5 @@ class Testes extends TestCase {
         $email = new Email();        
 		$this->assertEquals(true, $email->validarEmail("guilherme@psinf.com.br"));
     }
+        $this->assertEquals("Lançamento - Receita", $data);                
 }
