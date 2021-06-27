@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Email.php';
+include_once './classes/Email.php';
 
 use PHPUnit\Framework\TestCase;
 
