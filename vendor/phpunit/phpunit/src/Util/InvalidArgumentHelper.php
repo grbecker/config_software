@@ -12,19 +12,11 @@ namespace PHPUnit\Util;
 use PHPUnit\Framework\Exception;
 
 /**
- * Factory for PHPUnit\Framework\Exception objects that are used to describe
- * invalid arguments passed to a function or method.
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
-class InvalidArgumentHelper
+final class InvalidArgumentHelper
 {
-    /**
-     * @param int    $argument
-     * @param string $type
-     * @param mixed  $value
-     *
-     * @return Exception
-     */
-    public static function factory($argument, $type, $value = null)
+    public static function factory(int $argument, string $type, $value = null): Exception
     {
         $stack = \debug_backtrace();
 

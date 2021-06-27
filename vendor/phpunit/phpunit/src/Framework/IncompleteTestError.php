@@ -9,6 +9,9 @@
  */
 namespace PHPUnit\Framework;
 
-class IncompleteTestError extends AssertionFailedError implements IncompleteTest
+/**
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ */
+final class IncompleteTestError extends AssertionFailedError implements IncompleteTest
 {
 }

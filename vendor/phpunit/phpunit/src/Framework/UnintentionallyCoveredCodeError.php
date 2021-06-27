@@ -10,9 +10,8 @@
 namespace PHPUnit\Framework;
 
 /**
- * Extension to PHPUnit\Framework\AssertionFailedError to mark the special
- * case of a test that unintentionally covers code.
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
-class UnintentionallyCoveredCodeError extends RiskyTestError
+final class UnintentionallyCoveredCodeError extends RiskyTestError
 {
 }
