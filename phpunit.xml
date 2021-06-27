@@ -7,7 +7,9 @@
 		 strict="false">    
 	
 	<testsuites>
-		<directory>tests</directory>
+	
+		<directory>tests</directory>		
+		
     </testsuites>	
 	
 </phpunit>
