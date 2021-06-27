@@ -3,7 +3,7 @@
          colors="true"
 		 verbose="true"
 		 stopOnFailure="true"
-		 stderr="true"
+		 stderr="false"
 		 beStrictAboutOutputDuringTests="false">    
 	
 	<testsuites>	
