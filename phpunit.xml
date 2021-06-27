@@ -3,13 +3,10 @@
          colors="true"
 		 verbose="true"
 		 stopOnFailure="true"
-		 beStrictAboutOutputDuringTests="false"
-		 strict="false">    
+		 beStrictAboutOutputDuringTests="false">    
 	
-	<testsuites>
-	
-		<directory>tests</directory>		
-		
+	<testsuites>	
+		<directory>tests</directory>				
     </testsuites>	
 	
 </phpunit>
