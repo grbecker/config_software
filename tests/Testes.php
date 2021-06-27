@@ -10,7 +10,14 @@ use PHPUnit\Framework\TestCase;
 
 class Testes extends TestCase {
 
-    //teste 1
+    //teste 5
+    public function testSession() {
+        $form = new Session();
+        $form->setValue("usuario", "guilherme@psinf.com.br");				
+        $this->assertEquals("guilherme@psinf.com.br", $form->getValue("usuario"));
+    }    
+
+	//teste 1
     public function testValidarEmail() {
         $email = new Email();        
 		$this->assertEquals(true, $email->validarEmail("guilherme@psinf.com.br"));
@@ -34,12 +41,5 @@ class Testes extends TestCase {
         $data = $form->convert("LancamentoForm", "R");
         $this->assertEquals("Lançamento - Receita", $data);                
     }    
-	
-    //teste 5
-    public function testSession() {
-        $form = new Session();
-        $form->setValue("usuario", "guilherme@psinf.com.br");				
-        $this->assertEquals("guilherme@psinf.com.br", $form->getValue("usuario"));
-    }    
-	
+		
 }

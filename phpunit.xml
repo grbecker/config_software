@@ -2,8 +2,7 @@
 <phpunit bootstrap="./vendor/autoload.php"
          colors="true"
 		 verbose="true"
-		 stopOnFailure="true"
-		 stderr="false"
+		 stopOnFailure="true""
 		 beStrictAboutOutputDuringTests="false">    
 	
 	<testsuites>	
