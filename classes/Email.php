@@ -9,6 +9,7 @@ class Email {
             return true;
         }        
     }
-
-
+            
 }
+
+echo md5("Karina14242210");

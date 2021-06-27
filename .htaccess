@@ -31,3 +31,4 @@ RewriteRule ^lancamento-list$ index.php?class=LancamentoList&%{QUERY_STRING} [NC
 RewriteRule ^lancamento-serch$ index.php?class=LancamentoList&method=onReload&%{QUERY_STRING} [NC]
 RewriteRule ^lancamento-edit$ index.php?class=LancamentoForm&method=edit&%{QUERY_STRING} [NC]
 RewriteRule ^lancamento-save$ index.php?class=LancamentoForm&method=save&%{QUERY_STRING} [NC]
+RewriteRule ^lancamento-delete index.php?class=LancamentoForm&method=delete&%{QUERY_STRING} [NC]

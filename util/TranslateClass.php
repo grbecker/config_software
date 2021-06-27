@@ -30,6 +30,8 @@ class TranslateClass {
                 }
             case "LancamentoList":
                 return "Relatório Financeiro";
+            case "ContasReceberList":
+                return "Relatório Contas Receber";                
             default : "";    
         }
     }

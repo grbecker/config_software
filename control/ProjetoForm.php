@@ -14,6 +14,7 @@ class ProjetoForm {
             'id' => null,
             'nome' => null,
             'observacao' => null,
+            'valor' => null,
             'status' => null
         ];
         
@@ -59,6 +60,7 @@ class ProjetoForm {
         $this->html = str_replace('{action}', 'projeto-save', $this->html);
         $this->html = str_replace('{id}', $this->data['id'], $this->html);
         $this->html = str_replace('{nome}', $this->data['nome'], $this->html);
+        $this->html = str_replace('{valor}', $this->data['valor'], $this->html);
         $this->html = str_replace('{observacao}', $this->data['observacao'], $this->html);
         $this->html = str_replace("option value='{$this->data['status']}'", "option selected value='{$this->data['status']}'", $this->html);        
         return $this->html;

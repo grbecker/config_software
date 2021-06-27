@@ -4,7 +4,7 @@ require_once 'classes/Lancamento.php';
 require_once 'util/TranslateClass.php';
 require_once 'util/FormatValues.php';
 
-class LancamentoList {
+class ContasReceberList {
 
     private $html;
     private $data;
@@ -19,7 +19,6 @@ class LancamentoList {
             'data_inicial' => null,
             'data_final' => null,
             'tipo' => null,
-            'paga' => null,
             'pesquisa' => null
         ];
     }
@@ -61,13 +60,13 @@ class LancamentoList {
     }
 
     public function onReload($param) {
-        try {                                   
-            $this->data = $param;                                  
+        try {
+            
+            $this->data = $param;
             $where = isset($param['data_inicial']) && trim($param['data_inicial']) != '' ? " AND data >=  \"" . FormatValues::dataSQL($param['data_inicial']) . "\"" : "";
             $where .= isset($param['data_final']) && trim($param['data_final']) != '' ? " AND data <=  \"" . FormatValues::dataSQL($param['data_final']) . "\"" : "";
             $where .= isset($param['tipo']) && trim($param['tipo']) != '' ? " AND lancamentos.tipo =  \"" . $param['tipo'] . "\"" : "";
             $where .= isset($param['tipo']) && trim($param['tipo']) != '' ? " AND lancamentos.tipo =  \"" . $param['tipo'] . "\"" : "";
-            $where .= isset($param['paga']) && trim($param['paga']) != '' ? " AND lancamentos.paga =  \"" . $param['paga'] . "\"" : "";
             $where .= isset($param['pesquisa']) && trim($param['pesquisa']) != '' ?
                     " AND (categoria.nome LIKE \"%" . $param['pesquisa'] . "%\" OR "
                     . "complemento LIKE \"%" . $param['pesquisa'] . "%\" OR "
@@ -84,7 +83,6 @@ class LancamentoList {
                 $item = file_get_contents('html/item.html');
                 $item = str_replace('{active}', isset($_REQUEST['id']) && $_REQUEST['id'] == $row['id'] ? 'list-group-item-success' : NULL, $item);
                 $item = str_replace('{href}', "lancamento-edit?type={$row['tipo']}&id={$row['id']}", $item);
-                $item = str_replace('{href1}', "lancamento-delete?type={$row['tipo']}&id={$row['id']}", $item);
                 $item = str_replace('{categoria}', $row['nome'], $item);
                 $item = str_replace('{data}', FormatValues::dataNormal($row['data']), $item);
                 $item = str_replace('{valor}', number_format($row['valor'], 2, ',', '.'), $item);
@@ -113,14 +111,12 @@ class LancamentoList {
         $this->html = str_replace('{valor_despesa}', number_format($this->valor_d, 2, ',', '.'), $this->html);
         $this->html = str_replace('{valor_investimento}', number_format($this->valor_i, 2, ',', '.'), $this->html);
         $this->html = str_replace('{valor_receita}', number_format($this->valor_r, 2, ',', '.'), $this->html);
+
         $this->html = str_replace('{data_inicial}', isset($this->data['data_inicial']) ? $this->data['data_inicial'] : null, $this->html);
         $this->html = str_replace('{data_final}', isset($this->data['data_final']) ? $this->data['data_final'] : null, $this->html);
         $this->html = str_replace('{pesquisa}', isset($this->data['pesquisa']) ? $this->data['pesquisa'] : null, $this->html);       
         if (isset($this->data['tipo'])) {        
-          $this->html = str_replace("option id='tipo' value='{$this->data['tipo']}'", "option selected value='{$this->data['tipo']}'", $this->html);
-        }
-        if (isset($this->data['paga'])) {        
-          $this->html = str_replace("option id='paga' value='{$this->data['paga']}'", "option selected value='{$this->data['paga']}'", $this->html);
+          $this->html = str_replace("option value='{$this->data['tipo']}'", "option selected value='{$this->data['tipo']}'", $this->html);
         }
 
         return $this->html;

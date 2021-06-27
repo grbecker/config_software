@@ -1,1 +1,87 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="card card-stats">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="info-icon">
+                            <i class="bi bi-graph-up text-success" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="numbers">
+                            <p class="card-category">Receitas</p>
+                            <h6 class="card-title">R$ {receitas}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card card-stats">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="info-icon">
+                            <i class="bi bi-graph-down text-danger" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="numbers">
+                            <p class="card-category">Despesas</p>
+                            <h6 class="card-title">R$ {despesas}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card card-stats">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="info-icon">
+                            <i class="bi bi-wallet2 text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="numbers">
+                            <p class="card-category">Em aberto</p>
+                            <h6 class="card-title">R$ {emaberto}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card card-stats">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="info-icon">
+                            <i class="bi bi-graph-up text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="numbers">
+                            <p class="card-category">Caixa</p>
+                            <h6 class="card-title">R$ {caixa}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {cards}
+</div>
+
 <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1008" height="323" style="display: block; width: 336px; height: 141px;"></canvas>

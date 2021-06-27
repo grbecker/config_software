@@ -2,6 +2,13 @@
 
 class FormatValues {
 
+    public static function decimalEN($valor) {
+        return number_format($valor, 2, '.', '');
+    }
+
+    public static function decimalPT($valor) {
+        return number_format($valor, 2, ',', '.');
+    }
 
     public static function dataNormal($data) {
         if (trim($data) == "") {

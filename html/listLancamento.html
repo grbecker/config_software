@@ -9,13 +9,21 @@
                 <label class="form-label">Data Final</label>
                 <input name="data_final" type="date" class="form-control" value="{data_final}">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <label class="form-label">Tipo</label>
                 <select class="form-select" name="tipo">
                     <option></option>
-                    <option value='R'>Receita</option>
-                    <option value='D'>Despesa</option>
-                    <option value='I'>Investimento</option>
+                    <option id='tipo' value='R'>Receita</option>
+                    <option id='tipo' value='D'>Despesa</option>
+                    <option id='tipo' value='I'>Investimento</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Paga</label>
+                <select class="form-select" name="paga">
+                    <option></option>
+                    <option id='paga' value='S'>Paga</option>
+                    <option id='paga' value='N'>Em aberto</option>
                 </select>
             </div>
             <div class="col-md-4">

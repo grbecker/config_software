@@ -1,7 +1,7 @@
 <?php
 
-//require_once './classes/Usuario.php';
-require_once 'C:\wamp64\www\config_software\classes\Usuario.php';
+require_once './classes/Usuario.php';
+//require_once 'C:\wamp64\www\config_software\classes\Usuario.php';
 
 class LoginForm {
 

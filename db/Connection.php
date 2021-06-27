@@ -7,7 +7,7 @@ class Connection {
     public static function open() {
 
         if (empty(self::$conn)) {
-            self::$conn = new PDO("mysql:host=127.0.0.1;port=3306;dbname=gastos", "suporte-psinf", "Spsinf");
+            self::$conn = new PDO("mysql:host=c107gastos.mysql.dbaas.com.br;port=3306;dbname=c107gastos", "c107gastos", "Senhapsi@1234");
             self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return self::$conn;
         } else {

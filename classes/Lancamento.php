@@ -18,24 +18,50 @@ class Lancamento {
         $result->execute([':id' => $id]);
     }
 
+    public static function saldoProjeto($id) {
+        $conn = Connection::open();
+        $result = $conn->prepare("SELECT SUM(IF(lancamentos.tipo = 'R' AND lancamentos.paga = 'S', lancamentos.valor, 0)) AS valor FROM lancamentos WHERE lancamentos.id_empresa = 1 and lancamentos.id_projeto=:id");
+        $result->execute([':id' => $id]);
+        return $result->fetch();
+    }
     
+    public static function dashboard($where) {
+        $conn = Connection::open();
+        $result = $conn->query("SELECT "
+                . "SUM(IF(tipo = 'D', valor, 0)) AS despesas, "
+                . "SUM(IF(tipo = 'R', valor, 0)) AS receitas, "
+                . "SUM(IF(tipo = 'I', valor, 0)) AS investimentos "
+                . "FROM "
+                . "lancamentos "
+                . "WHERE paga = 'S' AND lancamentos.id_empresa = 1 " . $where . " "
+                . "");
+        return $result->fetch();
+    }
+
+    public static function contasReceber($where) {
+        $conn = Connection::open();
+        $result = $conn->query("SELECT projeto.nome as projeto, projeto.valor as valor_projeto, SUM(IF(lancamentos.tipo = 'R' AND lancamentos.paga = 'S', lancamentos.valor, 0)) AS valor "
+                . "FROM projeto LEFT JOIN lancamentos ON lancamentos.id_empresa = projeto.id_empresa AND lancamentos.id_projeto = projeto.id "
+                . "WHERE lancamentos.id_empresa = 1 GROUP BY projeto.nome ORDER BY projeto");
+        return $result->fetchAll();
+    }
+
     public static function allDay($where) {
         $conn = Connection::open();
         $result = $conn->query("SELECT "
-                . "data, valor "
+                . "YEAR(data) as ano, MONTH(data) as mes,  SUM(valor) AS total  "
                 . "FROM "
                 . "lancamentos "
                 . "WHERE lancamentos.id_empresa = 1 " . $where . " "
-                . "GROUP BY data "
+                . "GROUP BY YEAR(data), MONTH(data) "
                 . "ORDER BY data LIMIT 1000");
         return $result->fetchAll();
     }
-    
-    
+
     public static function all($where) {
         $conn = Connection::open();
         $result = $conn->query("SELECT "
-                . "lancamentos.id as id, categoria.nome as nome, data, valor, tipo_pagamento.nome as tipo_nome, lancamentos.tipo as tipo, "
+                . "lancamentos.id as id, categoria.nome as nome, data, lancamentos.valor as valor, tipo_pagamento.nome as tipo_nome, lancamentos.tipo as tipo, "
                 . "complemento, paga, projeto.nome as projeto, status.nome as status "
                 . "FROM "
                 . "lancamentos "
@@ -86,7 +112,7 @@ class Lancamento {
             ':tipo' => $lancamento['tipo'],
             ':paga' => $metodo = isset($lancamento['paga']) ? "S" : "N",
             ':complemento' => $lancamento['complemento'],
-            ':anexo' => isset($lancamento['anexo']) ? $lancamento['anexo'] : ""                      
+            ':anexo' => isset($lancamento['anexo']) ? $lancamento['anexo'] : ""
         ]);
         return $lancamento['id'];
     }

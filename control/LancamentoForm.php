@@ -26,16 +26,16 @@ class LancamentoForm {
             'anexo' => null
             ];
 
-        $projetos = Projeto::all();
+        $projetos = Projeto::all("","nome");
         $select = "<option></option>";
         foreach ($projetos as $row) {
-            $select .= "<option value='{$row['id']}'>{$row['nome']}</option>";
+            $select .= "<option id='projeto' value='{$row['id']}'>{$row['nome']}</option>";
         }               
         $this->html = str_replace('{projetos}', $select, $this->html);                 
         $tipos = Tipo::all("");
         $select = "<option></option>";
         foreach ($tipos as $row) {
-            $select .= "<option value='{$row['id']}'>{$row['nome']}</option>";
+            $select .= "<option id='tipo' value='{$row['id']}'>{$row['nome']}</option>";
         }               
         $this->html = str_replace('{tipos}', $select, $this->html);        
 
@@ -43,7 +43,7 @@ class LancamentoForm {
         $categoria = Categoria::all($where);
         $select = "<option></option>";
         foreach ($categoria as $row) {
-            $select .= "<option value='{$row['id']}'>{$row['nome']}</option>";
+            $select .= "<option id='categoria' value='{$row['id']}'>{$row['nome']}</option>";
         }               
         $this->html = str_replace('{categorias}', $select, $this->html);        
         
@@ -89,9 +89,12 @@ class LancamentoForm {
         $this->html = str_replace('{action}', 'lancamento-save', $this->html);
         $this->html = str_replace('{id}', $this->data['id'], $this->html);
         $this->html = str_replace('{tipo}', $this->data['tipo'], $this->html);
-        $this->html = str_replace("option value='{$this->data['id_projeto']}'", "option selected value='{$this->data['id_projeto']}'", $this->html);
-        $this->html = str_replace("option value='{$this->data['id_pagamento']}'", "option selected value='{$this->data['id_pagamento']}'", $this->html);
-        $this->html = str_replace("option value='{$this->data['id_categoria']}'", "option selected value='{$this->data['id_categoria']}'", $this->html);
+
+
+        $this->html = str_replace("option id='projeto' value='{$this->data['id_projeto']}'", "option selected value='{$this->data['id_projeto']}'", $this->html);
+        $this->html = str_replace("option id='tipo' value='{$this->data['id_pagamento']}'", "option selected value='{$this->data['id_pagamento']}'", $this->html);
+        $this->html = str_replace("option id='categoria' value='{$this->data['id_categoria']}'", "option selected value='{$this->data['id_categoria']}'", $this->html);
+        
         $this->html = str_replace('{data}', $this->data['data'], $this->html);
         $this->html = str_replace('{valor}', $this->data['valor'], $this->html);
         $this->html = str_replace('{paga}', $this->data['paga'], $this->html);

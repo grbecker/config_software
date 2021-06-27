@@ -1,19 +1,21 @@
 <?php
 
-//require_once './db/Connection.php';
-//require_once 'Session.php';
-require_once 'C:\wamp64\www\config_software\db\Connection.php';
-require_once 'C:\wamp64\www\config_software\classes\Session.php';
+require_once './db/Connection.php';
+require_once 'Session.php';
+
+//require_once 'C:\wamp64\www\config_software\db\Connection.php';
+//require_once 'C:\wamp64\www\config_software\classes\Session.php';
 
 class Usuario {
-    
+
     public function __construct() {
+        
     }
-       
+
     public static function login($usuario) {
-        $conn = Connection::open();        
+        $conn = Connection::open();
         $result = $conn->prepare("SELECT * FROM usuario WHERE email = :email AND senha = :senha");
-                $result->execute([
+        $result->execute([
             ':email' => $usuario['email'],
             ':senha' => md5($usuario['senha'])
         ]);
@@ -26,21 +28,26 @@ class Usuario {
         } else {
             return "Usuário ou senha incorretos";
         }
-        
     }
-    
-    
+
     public static function find($empresa, $id) {
         $result = $conn->prepare("SELECT * FROM usuario WHERE id_empresa=:id_empresa AND id = :id");
-        $result->execute([':id_empresa' => $empresa, 
-                          ':id' => $id]);
+        $result->execute([':id_empresa' => $empresa,
+            ':id' => $id]);
         return $result->fetch();
     }
 
-    public static function delete($empresa, $id) {
-        $result = $conn->prepare("DELETE FROM usuario WHERE id_empresa=:id_empresa AND id = :id");
-        $result->execute([':id_empresa' => $empresa, 
-                          ':id' => $id]);
+    public static function delete($id) {
+        if (!filter_var($id, FILTER_VALIDATE_INT)) {
+            throw new Exception("Erro ao excluir usuário campo \"id\" não é valido!");
+        } else if ($id != "" && $id != 0) {
+            $result = $conn->prepare("DELETE FROM usuario WHERE id_empresa=:id_empresa AND id = :id");
+            $result->execute([':id_empresa' => 1,
+                ':id' => $id]);
+            return true;
+        } else {
+            throw new Exception("Erro ao excluir usuário campo \"id\" obrigatório");
+        }
     }
 
     public static function all($empresa) {
@@ -64,7 +71,7 @@ class Usuario {
                                   senha     = :senha 
                         WHERE id_empresa=:id_empresa AND id = :id";
         }
-        $result = $conn->prepare($sql);        
+        $result = $conn->prepare($sql);
         $result->execute([
             ':id_empresa' => $usuario['id_empresa'],
             ':id' => $usuario['id'],
@@ -73,5 +80,5 @@ class Usuario {
             ':senha' => $usuario['senha']
         ]);
     }
-    
+
 }
