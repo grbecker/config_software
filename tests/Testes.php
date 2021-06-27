@@ -1,6 +1,7 @@
 <?php
 
 include_once './classes/Email.php';
+include_once './classes/Session.php';
 
 include_once './util/FormatValues.php';
 include_once './util/TranslateClass.php';
@@ -33,5 +34,12 @@ class Testes extends TestCase {
         $data = $form->convert("LancamentoForm", "R");
         $this->assertEquals("Lançamento - Receita", $data);                
     }    
-
+	
+    //teste 5
+    public function testSession() {
+        $form = new Session();
+        $form->setValue("usuario", "guilherme@psinf.com.br");				
+        $this->assertEquals("guilherme@psinf.com.br", $form->getValue("usuario"));
+    }    
+	
 }
