@@ -79,7 +79,7 @@ class LancamentoForm {
         try {
             $id = Lancamento::save($param);
             //$this->data = $param;
-            echo "<script>window.location='index.php?class=LancamentoList&?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=LancamentoList&id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }

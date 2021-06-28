@@ -50,7 +50,7 @@ class ProjetoForm {
         try {
             $id = Projeto::save($param);
             //$this->data = $param;
-            echo "<script>window.location='index.php?class=ProjetoList&?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=ProjetoList&id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }

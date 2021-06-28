@@ -38,8 +38,8 @@ class CategoriaList {
                 $items .= "<tr {$cor}>";
                 $items .= "<td>{$row["nome"]}</td>";
                 $items .= "<td>{$row["tipo_nome"]}</td>";
-                $items .= "<td><a href=\"index.php?class=CategoriaForm&method=edit&?id={$row["id"]}\"><i class=\"bi bi-pencil-square\"></i></a></td>";
-                $items .= "<td><a href=\"index.php?class=CategoriaForm&method=delete&?id={$row["id"]}\"><i class=\"bi bi-trash\"></i></a></td>";
+                $items .= "<td><a href=\"index.php?class=CategoriaForm&method=edit&id={$row["id"]}\"><i class=\"bi bi-pencil-square\"></i></a></td>";
+                $items .= "<td><a href=\"index.php?class=CategoriaForm&method=delete&id={$row["id"]}\"><i class=\"bi bi-trash\"></i></a></td>";
                 $items .= "</tr>";
             }
             $items .= "</tbody>" .

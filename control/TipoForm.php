@@ -39,7 +39,7 @@ class TipoForm {
         try {
             $id = Tipo::save($param);
             //$this->data = $param;
-            echo "<script>window.location='index.php?class=TipoList&?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=TipoList&id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }

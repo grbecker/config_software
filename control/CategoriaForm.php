@@ -61,7 +61,7 @@ class CategoriaForm {
         try {
             $id = Categoria::save($param);
             //$this->data = $param;
-            echo "<script>window.location='index.php?class=CategoriaList&?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=CategoriaList&id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
