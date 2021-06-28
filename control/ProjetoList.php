@@ -61,8 +61,8 @@ class ProjetoList {
                 $items .= "<td>{$row["nome"]}</td>";
                 $items .= "<td>" . number_format($row["valor"], 2, ',', '.') . "</td>";
                 $items .= "<td><b>" . number_format($row["valor"] - $valor['valor'], 2, ',', '.') . "</b></td>";
-                $items .= "<td><a href=\"projeto-edit?id={$row["id"]}\"><i class=\"bi bi-pencil-square\"></i></a></td>";
-                $items .= "<td><a href=\"projeto-delete?id={$row["id"]}\"><i class=\"bi bi-trash\"></i></a></td>";
+                $items .= "<td><a href=\"index.php?class=ProjetoForm&method=edit?id={$row["id"]}\"><i class=\"bi bi-pencil-square\"></i></a></td>";
+                $items .= "<td><a href=\"index.php?class=ProjetoForm&method=delete?id={$row["id"]}\"><i class=\"bi bi-trash\"></i></a></td>";
                 $items .= "</tr>";
                 $total = $total + ($row["valor"] - $valor['valor']);
             }
@@ -84,7 +84,7 @@ class ProjetoList {
 
     public function show() {
         $this->html = str_replace('{itens}', $this->load(), $this->html);
-        $this->html = str_replace('{classe}', 'projeto', $this->html);
+        $this->html = str_replace('{classe}', 'index.php?class=ProjetoForm', $this->html);
         return $this->html;
     }
 

@@ -36,8 +36,8 @@ class TipoList {
                 $cor = isset($_REQUEST['id']) && $_REQUEST['id'] == $row['id'] ? "class=\"table-success\"" : NULL;
                 $items .= "<tr {$cor}>";
                 $items .= "<td>{$row["nome"]}</td>";
-                $items .= "<td><a href=\"tipo-edit?id={$row["id"]}\"><i class=\"bi bi-pencil-square\"></i></a></td>";
-                $items .= "<td><a href=\"tipo-delete?id={$row["id"]}\"><i class=\"bi bi-trash\"></i></a></td>";
+                $items .= "<td><a href=\"index.php?class=TipoForm&method=edit?id={$row["id"]}\"><i class=\"bi bi-pencil-square\"></i></a></td>";
+                $items .= "<td><a href=\"index.php?class=TipoForm&method=delete?id={$row["id"]}\"><i class=\"bi bi-trash\"></i></a></td>";
                 $items .= "</tr>";
             }
             $items .= "</tbody>" .
@@ -50,7 +50,7 @@ class TipoList {
 
     public function show() {        
         $this->html = str_replace('{itens}', $this->load() , $this->html);                
-        $this->html = str_replace('{classe}', 'tipo' , $this->html);        
+        $this->html = str_replace('{classe}', 'index.php?class=TipoForm' , $this->html);        
         return $this->html;
     }
 

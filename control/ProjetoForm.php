@@ -40,7 +40,7 @@ class ProjetoForm {
         try {
             $id = (int) $param['id'];
             $this->data = Projeto::delete($id);
-            echo "<script>window.location='projeto-list';</script>";
+            echo "<script>window.location='index.php?class=ProjetoList';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
@@ -50,14 +50,14 @@ class ProjetoForm {
         try {
             $id = Projeto::save($param);
             //$this->data = $param;
-            echo "<script>window.location='projeto-list?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=ProjetoList?id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
     }
 
     public function show() {
-        $this->html = str_replace('{action}', 'projeto-save', $this->html);
+        $this->html = str_replace('{action}', 'index.php?class=ProjetoForm&method=save', $this->html);
         $this->html = str_replace('{id}', $this->data['id'], $this->html);
         $this->html = str_replace('{nome}', $this->data['nome'], $this->html);
         $this->html = str_replace('{valor}', $this->data['valor'], $this->html);

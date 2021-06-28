@@ -26,7 +26,7 @@
     </head>
     <body>
         <header class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="home">Controle de gastos</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php?class=DashboardForm">Controle de gastos</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person-check"></i> Perfil</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="onLogout"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+                        <li><a class="dropdown-item" href="index.php?class=LoginForm&method=onLogout"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
                     </ul>
                 </li>
             </ul>
@@ -53,7 +53,7 @@
 
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="home">
+                                <a class="nav-link active" aria-current="page" href="index.php?class=DashboardForm">
                                     <i class="bi bi-house"></i>
                                     Dashboard
                                 </a>
@@ -64,19 +64,19 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="lancamento?type=R">
+                                <a class="nav-link" href="index.php?class=LancamentoForm&?type=R">
                                     <i class="bi bi-graph-up"></i>
                                     Receitas
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="lancamento?type=D">
+                                <a class="nav-link" href="index.php?class=LancamentoForm&?type=D">
                                     <i class="bi bi-graph-down"></i>
                                     Despesas
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="lancamento?type=I">
+                                <a class="nav-link" href="index.php?class=LancamentoForm&?type=I">
                                     <i class="bi bi-wallet2"></i>
                                     Investimentos
                                 </a>
@@ -87,19 +87,19 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="tipo-list">
+                                <a class="nav-link" href="index.php?class=TipoList&">
                                     <i class="bi bi-credit-card"></i>
                                     Tipo pagamento
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="categoria-list">
+                                <a class="nav-link" href="index.php?class=CategoriaList&">
                                     <i class="bi bi-cart2"></i>
                                     Categorias
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="projeto-list">
+                                <a class="nav-link" href="index.php?class=ProjetoList&">
                                     <i class="bi bi-clipboard-check"></i>
                                     Projetos
                                 </a>
@@ -110,7 +110,7 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="lancamento-list">
+                                <a class="nav-link" href="index.php?class=LancamentoList&">
                                     <i class="bi bi-file-earmark-text"></i>
                                     Financeiro
                                 </a>

@@ -83,8 +83,8 @@ class LancamentoList {
             foreach ($lancamento as $row) {
                 $item = file_get_contents('html/item.html');
                 $item = str_replace('{active}', isset($_REQUEST['id']) && $_REQUEST['id'] == $row['id'] ? 'list-group-item-success' : NULL, $item);
-                $item = str_replace('{href}', "lancamento-edit?type={$row['tipo']}&id={$row['id']}", $item);
-                $item = str_replace('{href1}', "lancamento-delete?type={$row['tipo']}&id={$row['id']}", $item);
+                $item = str_replace('{href}', "index.php?class=LancamentoForm&method=edit?type={$row['tipo']}&id={$row['id']}", $item);
+                $item = str_replace('{href1}', "index.php?class=LancamentoForm&method=delete?type={$row['tipo']}&id={$row['id']}", $item);
                 $item = str_replace('{categoria}', $row['nome'], $item);
                 $item = str_replace('{data}', FormatValues::dataNormal($row['data']), $item);
                 $item = str_replace('{valor}', number_format($row['valor'], 2, ',', '.'), $item);
@@ -109,7 +109,7 @@ class LancamentoList {
             $this->html = str_replace('{itens}', $this->onReload(""), $this->html);
         }
         $this->html = str_replace('{classe}', 'tipo', $this->html);
-        $this->html = str_replace('{action}', 'lancamento-serch', $this->html);
+        $this->html = str_replace('{action}', 'index.php?class=LancamentoList&method=onReload', $this->html);
         $this->html = str_replace('{valor_despesa}', number_format($this->valor_d, 2, ',', '.'), $this->html);
         $this->html = str_replace('{valor_investimento}', number_format($this->valor_i, 2, ',', '.'), $this->html);
         $this->html = str_replace('{valor_receita}', number_format($this->valor_r, 2, ',', '.'), $this->html);

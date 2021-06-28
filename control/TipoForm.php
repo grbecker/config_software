@@ -29,7 +29,7 @@ class TipoForm {
         try {
             $id = (int) $param['id'];
             $this->data = Tipo::delete($id);
-            echo "<script>window.location='tipo-list';</script>";
+            echo "<script>window.location='index.php?class=TipoList';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
@@ -39,14 +39,14 @@ class TipoForm {
         try {
             $id = Tipo::save($param);
             //$this->data = $param;
-            echo "<script>window.location='tipo-list?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=TipoList?id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
     }
 
     public function show() {
-        $this->html = str_replace('{action}', 'tipo-save', $this->html);
+        $this->html = str_replace('{action}', 'index.php?class=TipoForm&method=save', $this->html);
         $this->html = str_replace('{id}', $this->data['id'], $this->html);
         $this->html = str_replace('{nome}', $this->data['nome'], $this->html);
         $this->html = str_replace('{icone}', $this->data['icone'], $this->html);

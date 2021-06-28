@@ -27,7 +27,6 @@ class DashboardForm {
         $this->html = str_replace('{emaberto}', number_format($total, 2, ',', '.'), $this->html);
 
 
-
         $projeto = Projeto::all("", "status.ordem");
         $item = "";
         $items = "";
@@ -60,7 +59,7 @@ class DashboardForm {
                 </div>
                 
                 <span>R$ " . number_format($row["valor"], 2, ',', '.') ." </span> 
-                <a href=\"projeto-edit?id={$row["id"]}\"> <i class=\"bi bi-pencil-square\"></i> </a>    
+                <a href=\"index.php?class=ProjetoForm&method=edit?id={$row["id"]}\"> <i class=\"bi bi-pencil-square\"></i> </a>    
             </li>";
             $ultimoStatus = $row["status"];
             $status = $row["status"];
