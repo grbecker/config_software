@@ -69,7 +69,7 @@ class LancamentoForm {
         try {
             $id = (int) $param['id'];
             $this->data = Lancamento::delete($id);
-            echo "<script>window.location='index.php?class=LancamentoList';</script>";
+            echo "<script>window.location='index.php?class=LancamentoList&';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
@@ -79,14 +79,14 @@ class LancamentoForm {
         try {
             $id = Lancamento::save($param);
             //$this->data = $param;
-            echo "<script>window.location='index.php?class=LancamentoList?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=LancamentoList&?id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
     }
 
     public function show() {                
-        $this->html = str_replace('{action}', 'index.php?class=LancamentoForm&method=save', $this->html);
+        $this->html = str_replace('{action}', 'index.php?class=LancamentoForm&method=save&', $this->html);
         $this->html = str_replace('{id}', $this->data['id'], $this->html);
         $this->html = str_replace('{tipo}', $this->data['tipo'], $this->html);
 

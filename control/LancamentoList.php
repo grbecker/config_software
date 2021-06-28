@@ -108,8 +108,8 @@ class LancamentoList {
         if (!$this->loaded) {
             $this->html = str_replace('{itens}', $this->onReload(""), $this->html);
         }
-        $this->html = str_replace('{classe}', 'tipo', $this->html);
-        $this->html = str_replace('{action}', 'index.php?class=LancamentoList&method=onReload', $this->html);
+        $this->html = str_replace('{classe}', 'index.php?class=TipoForm&', $this->html);
+        $this->html = str_replace('{action}', 'index.php?class=LancamentoList&method=onReload&', $this->html);
         $this->html = str_replace('{valor_despesa}', number_format($this->valor_d, 2, ',', '.'), $this->html);
         $this->html = str_replace('{valor_investimento}', number_format($this->valor_i, 2, ',', '.'), $this->html);
         $this->html = str_replace('{valor_receita}', number_format($this->valor_r, 2, ',', '.'), $this->html);

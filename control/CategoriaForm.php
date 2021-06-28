@@ -51,7 +51,7 @@ class CategoriaForm {
         try {
             $id = (int) $param['id'];
             $this->data = Categoria::delete($id);
-            echo "<script>window.location='index.php?class=CategoriaList';</script>";
+            echo "<script>window.location='index.php?class=CategoriaList&';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
@@ -61,14 +61,14 @@ class CategoriaForm {
         try {
             $id = Categoria::save($param);
             //$this->data = $param;
-            echo "<script>window.location='index.php?class=CategoriaList?id={$id}';</script>";
+            echo "<script>window.location='index.php?class=CategoriaList&?id={$id}';</script>";
         } catch (Exception $e) {
             print $e->getMessage();
         }
     }
 
     public function show() {
-        $this->html = str_replace('{action}', 'index.php?class=CategoriaForm&method=save', $this->html);
+        $this->html = str_replace('{action}', 'index.php?class=CategoriaForm&method=save&', $this->html);
         $this->html = str_replace('{id}', $this->data['id'], $this->html);
         $this->html = str_replace('{nome}', $this->data['nome'], $this->html);
         $this->html = str_replace("option value='{$this->data['tipo']}'", "option selected value='{$this->data['tipo']}'", $this->html);
