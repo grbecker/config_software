@@ -32,7 +32,7 @@ class LoginForm {
             $this->return = Usuario::login($param);
             $this->data = $param;
             if (Session::getValue('logged')) {
-                echo "<script>window.location='index.php?class=DashboardForm';</script>";
+                echo "<script>window.location='index.php?class=DashboardForm&';</script>";
             }
         } catch (Exception $e) {
             print $e->getMessage();
@@ -41,7 +41,7 @@ class LoginForm {
 
     public function onLogout($param) {
         Session::setValue('logged', FALSE);
-        echo "<script>window.location='index.php?class=DashboardForm';</script>";
+        echo "<script>window.location='index.php?class=DashboardForm&';</script>";
     }
 
     public function show() {
