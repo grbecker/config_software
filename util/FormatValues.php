@@ -38,14 +38,14 @@ class FormatValues {
         }
     }
 
-    public static function somaGasto($valor, $tipo) {
+    public function somaGasto($valor, $tipo) {
         if ($tipo == "D") {
            $this->soma = $this->soma - $valor;
         } else {
            $this->soma = $this->soma + $valor;
         }
     }
-    public static function getSaldo() {
+    public function getSaldo() {
         return $this->soma;
     }
 }
