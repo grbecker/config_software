@@ -4,7 +4,7 @@ class Migration {
 
     private $sql;
 
-    private function __construct($table) {
+    public function __construct($table) {
         $this->sql = "CREATE TABLE IF NOT EXISTS `$table` (";
     }
 
