@@ -136,8 +136,14 @@ if (!$result->execute()) {
 
 $result = $conn->prepare("SELECT * FROM usuario");
 $result->execute();
-
 if ($result->rowCount() == 0) {
     $result = $conn->prepare("INSERT INTO `usuario` VALUES (1,1,'Guilherme','guilherme@psinf.com.br','73a203c6c187cd06382ba46af68c92a7')");
+    $result->execute();
+}
+
+$result = $conn->prepare("SELECT * FROM status");
+$result->execute();
+if ($result->rowCount() == 0) {
+    $result = $conn->prepare("INSERT INTO `status` VALUES (1,1,'PROJETOS EM ANDAMENTO','info',1),(1,2,'PROJETOS EM APROVACAO','secondary',2),(1,3,'AGUARDANDO EXECUCAO','warning',3),(1,4,'EXECUCAO EM ANDAMENTO','primary',4),(1,5,'EM AVERBACAO','info',5),(1,6,'FINALIZADO','success',6),(1,9,'OUTROS','dark',7),(1,7,'AGUARDANDO PROJETO','danger',0)");
     $result->execute();
 }
