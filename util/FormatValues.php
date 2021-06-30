@@ -1,13 +1,19 @@
 <?php
 
 class FormatValues {
-    
+
+    private $soma;
+
+    public function __construct() {
+        $this->soma;
+    }
+
     public static function decimalEN($valor) {
         if (is_numeric($valor)) {
-            return number_format($valor, 2, '.', '');    
+            return number_format($valor, 2, '.', '');
         } else {
             return false;
-        }                    
+        }
     }
 
     public static function decimalPT($valor) {
@@ -32,4 +38,11 @@ class FormatValues {
         }
     }
 
+    public static function somaGasto($valor, $tipo) {
+        if ($tipo == "D") {
+            return $this->soma = $this->soma - $valor;
+        } else {
+            return $this->soma = $this->soma + $valor;
+        }
+    }
 }

@@ -39,24 +39,32 @@ class Testes extends TestCase {
         $this->assertEquals("Lançamento - Receita", $form->convert("LancamentoForm", "R"));                
     }    
         
-    //teste 6
+    //teste 7
     public function testValue() {
         $form = new FormatValues();
         $this->assertEquals(10, $form->decimalEN(10));
     }        
             
-    //teste 6
+    //teste 8
     public function testTrasnlateRouteClass() {
         $form = new TranslateClass();
         $this->assertEquals(true, $form->routeClass("Categoria"));                
     }    
     
-    //teste 7
+    //teste 9
     public function testTrasnlateRouteControl() {
         $form = new TranslateClass();
         $this->assertEquals(true, $form->routeControl("CategoriaList"));                
     }    
 
+    //teste 10
+    public function testSomaGastos() {
+        $soma = new FormatValues();
+        $soma->somaGasto(1000, "R");
+        $soma->somaGasto(200, "R");
+        $this->assertEquals(100, $this->assertEquals(100, "D"));
+    }
+    
     
     //teste 1
     public function testValidarEmail1() {
