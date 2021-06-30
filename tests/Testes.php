@@ -1,7 +1,6 @@
 <?php
 
 include_once './classes/Email.php';
-include_once './control/LoginForm.php';
 
 include_once './util/FormatValues.php';
 include_once './util/TranslateClass.php';
@@ -45,17 +44,5 @@ class Testes extends TestCase {
         $form = new FormatValues();
         $this->assertEquals(10, $form->decimalEN(10));
     }        
-
-    //teste 7
-    public function testLoadTemplate() {
-        $form = new LoginForm();
-        $directory = 'html/login.html';
-        $retOk = FALSE;
-        if ($form->loadTemplate($directory) != "Erro ao carregar template \"{$directory}\"") {
-            $retOk = TRUE;
-        }
-        $this->assertEquals(TRUE, $retOk);
-    }
-
     
 }
