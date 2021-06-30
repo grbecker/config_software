@@ -42,7 +42,7 @@ class Lancamento {
         $conn = Connection::open();
         $result = $conn->query("SELECT projeto.nome as projeto, projeto.valor as valor_projeto, SUM(IF(lancamentos.tipo = 'R' AND lancamentos.paga = 'S', lancamentos.valor, 0)) AS valor "
                 . "FROM projeto LEFT JOIN lancamentos ON lancamentos.id_empresa = projeto.id_empresa AND lancamentos.id_projeto = projeto.id "
-                . "WHERE lancamentos.id_empresa = 1 GROUP BY projeto.nome ORDER BY projeto");
+                . "WHERE lancamentos.id_empresa = 1 GROUP BY projeto.nome, projeto.valor ORDER BY projeto");
         return $result->fetchAll();
     }
 
