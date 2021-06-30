@@ -1,9 +1,13 @@
 <?php
 
 class FormatValues {
-
+    
     public static function decimalEN($valor) {
-        return number_format($valor, 2, '.', '');
+        if (is_numeric($valor)) {
+            return number_format($valor, 2, '.', '');    
+        } else {
+            return false;
+        }                    
     }
 
     public static function decimalPT($valor) {

@@ -23,7 +23,7 @@ class LoginForm {
         if (file_exists($directory)){
             return file_get_contents($directory);
         } else {
-            throw new Exception("Erro ao carregar template \"{$directory}\"");
+            return "Erro ao carregar template \"{$directory}\"";
         }
     }
 

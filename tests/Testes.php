@@ -1,6 +1,7 @@
 <?php
 
 include_once './classes/Email.php';
+include_once './control/LoginForm.php';
 
 include_once './util/FormatValues.php';
 include_once './util/TranslateClass.php';
@@ -9,10 +10,10 @@ use PHPUnit\Framework\TestCase;
 
 class Testes extends TestCase {
 
-	//teste 1
+    //teste 1
     public function testValidarEmail() {
         $email = new Email();        
-		$this->assertEquals(true, $email->validarEmail("guilherme@psinf.com.br"));
+	$this->assertEquals(true, $email->validarEmail("guilherme@psinf.com.br"));
     }
 
     //teste 2
@@ -26,12 +27,35 @@ class Testes extends TestCase {
         $data = new FormatValues();
         $this->assertEquals("2020-01-01", $data->dataSQL("01/01/2020"));
     }
-	
+
     //teste 4
-    public function testTrasnlate() {
+    public function testTrasnlateLista() {
         $form = new TranslateClass();
-        $data = $form->convert("LancamentoForm", "R");
-        $this->assertEquals("Lançamento - Receita", $data);                
+        $this->assertEquals("Lista de categoria", $form->convert("CategoriaList", ""));                
     }    
-		
+
+    //teste 5
+    public function testTrasnlateLancamento() {
+        $form = new TranslateClass();
+        $this->assertEquals("Lançamento - Receita", $form->convert("LancamentoForm", "R"));                
+    }    
+        
+    //teste 6
+    public function testValue() {
+        $form = new FormatValues();
+        $this->assertEquals(10, $form->decimalEN(10));
+    }        
+
+    //teste 7
+    public function testLoadTemplate() {
+        $form = new LoginForm();
+        $directory = 'html/login.html';
+        $retOk = FALSE;
+        if ($form->loadTemplate($directory) != "Erro ao carregar template \"{$directory}\"") {
+            $retOk = TRUE;
+        }
+        $this->assertEquals(TRUE, $retOk);
+    }
+
+    
 }
