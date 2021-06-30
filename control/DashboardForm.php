@@ -17,13 +17,13 @@ class DashboardForm {
         $this->html = str_replace('{receitas}', number_format($lancamentos['receitas'], 2, ',', '.'), $this->html);
         $this->html = str_replace('{caixa}', number_format($lancamentos['receitas'] - $lancamentos['despesas'], 2, ',', '.'), $this->html);
 
-        /*$lancamentos = Lancamento::contasReceber("");
+        $lancamentos = Lancamento::contasReceber("");
         $total = 0;
         foreach ($lancamentos as $row) {
             if ($row['valor_projeto'] - $row['valor'] > 0) {
                 $total = $total + ($row['valor_projeto'] - $row['valor']);
             }
-        }*/
+        }
         $this->html = str_replace('{emaberto}', number_format("0", 2, ',', '.'), $this->html);
 
 
