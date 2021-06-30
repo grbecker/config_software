@@ -44,7 +44,19 @@ class Testes extends TestCase {
         $form = new FormatValues();
         $this->assertEquals(10, $form->decimalEN(10));
     }        
+            
+    //teste 6
+    public function testTrasnlateRouteClass() {
+        $form = new TranslateClass();
+        $this->assertEquals(true, $form->routeClass("Categoria"));                
+    }    
     
+    //teste 7
+    public function testTrasnlateRouteControl() {
+        $form = new TranslateClass();
+        $this->assertEquals(true, $form->routeControl("CategoriaList"));                
+    }    
+
     
     //teste 1
     public function testValidarEmail1() {

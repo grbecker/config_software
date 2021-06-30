@@ -3,9 +3,9 @@
 class TranslateClass {
 
     public static function convert($classe, $type) {
-        switch ($classe) {            
+        switch ($classe) {
             case "DashboardForm":
-                return "Dashboard";            
+                return "Dashboard";
             case "CategoriaList":
                 return "Lista de categoria";
             case "CategoriaForm":
@@ -19,21 +19,36 @@ class TranslateClass {
             case "ProjetoForm":
                 return "Cadastro de Projetos";
             case "LancamentoForm":
-                if($type == "D") {
-                    return "Lançamento - Despesa";    
-                } else if($type == "I") {
-                    return "Lançamento - Investimento";                        
-                } else if($type == "R") {
-                    return "Lançamento - Receita";                        
+                if ($type == "D") {
+                    return "Lançamento - Despesa";
+                } else if ($type == "I") {
+                    return "Lançamento - Investimento";
+                } else if ($type == "R") {
+                    return "Lançamento - Receita";
                 } else {
                     return "";
                 }
             case "LancamentoList":
                 return "Relatório Financeiro";
             case "ContasReceberList":
-                return "Relatório Contas Receber";                
-            default : "";    
+                return "Relatório Contas Receber";
+            default : "";
         }
     }
 
+    public static function routeClass($arquivo) {
+        if (file_exists('./classes/' . $arquivo . '.php')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static function routeControl($arquivo) {
+        if (file_exists('./control/' . $arquivo . '.php')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
