@@ -126,10 +126,10 @@ class DashboardForm {
         $this->js = str_replace('{labels}', $labels, $this->js);
         $this->js = str_replace('{datasets}', $datasets, $this->js);
 
-        $arquivo = fopen('html/js/dashboard.js', 'w');
-        $texto = $this->js;
-        fwrite($arquivo, $texto);
-        fclose($arquivo);
+        //$arquivo = fopen('html/js/dashboard.js', 'w');
+        //$texto = $this->js;
+        //fwrite($arquivo, $texto);
+        //fclose($arquivo);
     }
 
     public function show() {
