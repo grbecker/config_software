@@ -45,4 +45,40 @@ class Testes extends TestCase {
         $this->assertEquals(10, $form->decimalEN(10));
     }        
     
+    
+    //teste 1
+    public function testValidarEmail1() {
+        $email = new Email();        
+	$this->assertEquals(true, $email->validarEmail("guilherme@psinf.com.br"));
+    }
+
+    //teste 2
+    public function testDataNormal1() {
+        $data = new FormatValues();
+        $this->assertEquals('01/01/2020', $data->dataNormal("2020/01/01"));
+    }
+
+    //teste 3
+    public function testDataSQL1() {
+        $data = new FormatValues();
+        $this->assertEquals("2020-01-01", $data->dataSQL("01/01/2020"));
+    }
+
+    //teste 4
+    public function testTrasnlateLista1() {
+        $form = new TranslateClass();
+        $this->assertEquals("Lista de categoria", $form->convert("CategoriaList", ""));                
+    }    
+
+    //teste 5
+    public function testTrasnlateLancamento1() {
+        $form = new TranslateClass();
+        $this->assertEquals("Lançamento - Receita", $form->convert("LancamentoForm", "R"));                
+    }    
+        
+    //teste 6
+    public function testValue1() {
+        $form = new FormatValues();
+        $this->assertEquals(10, $form->decimalEN(10));
+    } 
 }

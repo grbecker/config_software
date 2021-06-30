@@ -134,5 +134,10 @@ if (!$result->execute()) {
     echo "usuario..OK";
 }
 
-$result = $conn->prepare("INSERT INTO `usuario` VALUES (1,1,'Guilherme','guilherme@psinf.com.br','73a203c6c187cd06382ba46af68c92a7')");
+$result = $conn->prepare("SELECT * FROM usuario");
 $result->execute();
+
+if ($result->rowCount() == 0) {
+    $result = $conn->prepare("INSERT INTO `usuario` VALUES (1,1,'Guilherme','guilherme@psinf.com.br','73a203c6c187cd06382ba46af68c92a7')");
+    $result->execute();
+}
