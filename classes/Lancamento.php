@@ -53,7 +53,7 @@ class Lancamento {
                 . "FROM "
                 . "lancamentos "
                 . "WHERE lancamentos.id_empresa = 1 " . $where . " "
-                . "GROUP BY , data, YEAR(data), MONTH(data) "
+                . "GROUP BY data, YEAR(data), MONTH(data) "
                 . "ORDER BY data LIMIT 1000");
         return $result->fetchAll();
     }
