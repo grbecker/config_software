@@ -2,7 +2,7 @@
 
 class FormatValues {
 
-    private $soma;
+    public $soma;
 
     public function __construct() {
         $this->soma;
@@ -40,9 +40,12 @@ class FormatValues {
 
     public static function somaGasto($valor, $tipo) {
         if ($tipo == "D") {
-            return $this->soma = $this->soma - $valor;
+           $this->soma = $this->soma - $valor;
         } else {
-            return $this->soma = $this->soma + $valor;
+           $this->soma = $this->soma + $valor;
         }
+    }
+    public static function getSaldo() {
+        return $this->soma;
     }
 }
