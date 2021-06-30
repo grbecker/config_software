@@ -27,7 +27,7 @@ class Migration {
         if (!$result->execute()) {
             return print_r($result->errorInfo());
         } else {
-            return $this->sql." ... OK";
+            return "Migration Verify: OK";
         }
     }
 
