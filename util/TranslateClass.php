@@ -36,7 +36,7 @@ class TranslateClass {
         }
     }
 
-    public static function routeClass($arquivo) {
+    public function routeClass($arquivo) {
         if (file_exists('./classes/' . $arquivo . '.php')) {
             return true;
         } else {
@@ -44,7 +44,7 @@ class TranslateClass {
         }
     }
     
-    public static function routeControl($arquivo) {
+    public function routeControl($arquivo) {
         if (file_exists('./control/' . $arquivo . '.php')) {
             return true;
         } else {
