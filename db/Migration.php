@@ -27,8 +27,18 @@ class Migration {
         if (!$result->execute()) {
             return print_r($result->errorInfo());
         } else {
-            return "Migration Verify: OK";
+            return "---***Migration new table Verify: OK***---";
         }
     }
+    
+    function insert($insert) {
+        $conn = Connection::open();
+        $result = $conn->prepare($insert);
+        if (!$result->execute()) {
+            return print_r($result->errorInfo());
+        } else {
+            return "---***Migration Insert Verify: OK***---";
+        }        
+    }    
 
 }

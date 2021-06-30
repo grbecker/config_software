@@ -11,7 +11,7 @@ class TranslateClass {
             case "CategoriaForm":
                 return "Cadastro de categoria";
             case "TipoList":
-                return "Lista Tipo Pagamento";
+                return "Lista Tipo Pagamento - ALTERADA";
             case "TipoForm":
                 return "Cadastro Tipo pagamento";
             case "ProjetoList":
