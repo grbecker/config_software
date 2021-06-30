@@ -63,7 +63,7 @@ class Testes extends TestCase {
         $soma->somaGasto(1000, "R");
         $soma->somaGasto(200, "R");
         $soma->somaGasto(100, "D");
-        $this->assertEquals(1000, $soma->getSaldo());
+        $this->assertEquals(1100, $soma->getSaldo());
     }
         
     //teste 1
