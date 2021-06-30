@@ -62,7 +62,7 @@ class Testes extends TestCase {
         $soma = new FormatValues();
         $soma->somaGasto(1000, "R");
         $soma->somaGasto(200, "R");
-        $this->assertEquals(100, $this->assertEquals(100, "D"));
+        $this->assertEquals(100, $soma->somaGasto(100, "D"));
     }
     
     
